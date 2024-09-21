@@ -13,6 +13,6 @@ def emotion_detector(text_to_analyze):
             dominant_emotion = i
     emotion_dict['dominant_emotion'] = dominant_emotion
     if response.status_code == 200:
-        return emotion_dict['dominant_emotion']
+        return emotion_dict
     else:
         return {"error": "Failed to get response from Watson API"}
