@@ -9,11 +9,14 @@ def index():
 @app.route("/emotionDetector")
 def emotion_detector_route():
     text = request.args.get("textToAnalyze")
+    if text == None:
+        return "Invalid text! Please try again!.\n"
     emotion = emotion_detector(text)
     prevalue = "For the given statement, the system response is "
     emotions = f"'anger': {emotion['anger']}, 'disgust': {emotion['disgust']},'fear': {emotion['fear']}, 'joy': {emotion['joy']}, 'sadness': {emotion['sadness']}"
     dominant_emotion = f"The dominant emotion is {emotion['dominant_emotion']}."
-    return f"{prevalue}{emotions} {dominant_emotion}"
-
+ 
+        
+    return f"{prevalue}{emotions} {dominant_emotion} \n"
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=5000) 
+    app.run(debug=True)
